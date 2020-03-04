@@ -3,7 +3,7 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 ?>
 <html>
 <head>
-	<title> Activity#1 </title>
+	<title> API Exercise </title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
