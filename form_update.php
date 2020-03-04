@@ -37,12 +37,16 @@
   </ul>
 </nav>
 <div class="form">	
-	<h1 style="color:#fff;"> Update Product </h1>
+	<h1 style="color:#fff;"> Update Product </h1><br>
 <form action="pro_update.php?id=<?php echo $id ?>" method="POST">
-	<input class="inputs" type="text" name="name" value="<?php echo $result['name'];?>"/>
-	<input class="inputs" type="text" name="description" value="<?php echo $result['description']; ?>"/>
-	<input class="inputs" type="text" name="price" value="<?php echo $result['price']; ?>"/>
-	<select class="inputs" name="category">
+	<h3>Name</h3>
+	<input class="inputs" type="text" name="name" value="<?php echo $result['name'];?>"/><br><br>
+	<h3>Description</h3>
+	<input class="inputs" type="text" name="description" value="<?php echo $result['description']; ?>"/><br><br>
+	<h3>Price</h3>
+	<input class="inputs" type="text" name="price" value="<?php echo $result['price']; ?>"/><br><br>
+	<h3>Category</h3>
+	<select class="inputs" name="category"><br><br>
 	<option value="<?php echo $result['category_id'];?>"><?php echo $result['category_name'];?></option>
 		<?php
 		foreach($category as $cview){
@@ -51,7 +55,7 @@
 		<?php
 		}
 		?>
-		</select>
+		</select><br><br>
 	<input class="addbtn" type="submit" name="submit" value="submit"/>
 
 </form>
