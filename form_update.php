@@ -13,7 +13,7 @@
 ?>
 <html> 
     <head>  
-      <link rel="stylesheet" type="text/css" href="css/css/style.php">
+      <link rel="stylesheet" type="text/css" href="css/style.php">
     </head>
 
 	<nav>
