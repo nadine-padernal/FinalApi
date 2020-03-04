@@ -16,18 +16,33 @@
       <link rel="stylesheet" type="text/css" href="css/css/style.php">
     </head>
 
-
-    <div class="navbar">
-        <a href="index.php?navigation=product">Products</a>
-        <a href="index.php?navigation=categories">Category</a>
-        <a href="index.php?navigation=create">Create</a>
-    </div>
-	<h1> Update Product </h1>
+	<nav>
+<ul class="primary">
+		<li>
+      <a href="index.php">Home</a>
+    </li>
+    <li>
+      <a href="">Products</a>
+      <ul class="sub">
+				<li><a href='index.php?mod=Prod'>Product List</a></li>
+				<li><a href='index.php?mod=FCrt'>Add Product</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="">Categories</a>
+      <ul class="sub">
+				<li><a href='index.php?mod=Cat'>Category List</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+<div class="form">	
+	<h1 style="color:#fff;"> Update Product </h1>
 <form action="pro_update.php?id=<?php echo $id ?>" method="POST">
-	<input type="text" name="name" value="<?php echo $result['name'];?>"/>
-	<input type="text" name="description" value="<?php echo $result['description']; ?>"/>
-	<input type="text" name="price" value="<?php echo $result['price']; ?>"/>
-	<select name="category">
+	<input class="inputs" type="text" name="name" value="<?php echo $result['name'];?>"/>
+	<input class="inputs" type="text" name="description" value="<?php echo $result['description']; ?>"/>
+	<input class="inputs" type="text" name="price" value="<?php echo $result['price']; ?>"/>
+	<select class="inputs" name="category">
 	<option value="<?php echo $result['category_id'];?>"><?php echo $result['category_name'];?></option>
 		<?php
 		foreach($category as $cview){
@@ -37,7 +52,7 @@
 		}
 		?>
 		</select>
-	<input type="submit" name="submit" value="submit"/>
+	<input class="addbtn" type="submit" name="submit" value="submit"/>
 
 </form>
 
