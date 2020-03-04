@@ -12,22 +12,35 @@ $value = $list;
     <head>  
       <link rel="stylesheet" type="text/css" href="css/style.css">
     </head>
-
-
-    <div class="navbar">
-        <a href="index.php?mod=Prod">Products</a>
-        <a href="index.php?mod=Cat">Category</a>
-        <a href="index.php?mod=Crt">Create</a>
-    </div>
+ <nav>
+<ul class="primary">
+		<li>
+      <a href="index.php">Home</a>
+    </li>
+    <li>
+      <a href="">Products</a>
+      <ul class="sub">
+				<li><a href='index.php?mod=Prod'>Product List</a></li>
+				<li><a href='index.php?mod=FCrt'>Add Product</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="">Categories</a>
+      <ul class="sub">
+				<li><a href='index.php?mod=Cat'>Category List</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
 <h1> Product Details </h1>
 
 <table>
     <tr>
-        <th>Product</th>
-        <th>Description</th>
-        <th>Price</th>
-        <th>Category ID</th>
+        <td class="tdP" >Product</th>
+        <td class="tdP" >Description</th>
+        <td class="tdP" >Price</th>
+        <td class="tdP" >Category ID</th>
     </tr>
 
     <tr>
@@ -35,8 +48,8 @@ $value = $list;
         <td><?php echo $value['description'];?></td>
         <td><?php echo $value['price'];?></td>
         <td><?php echo $value['category_id'];?></td>
-        <td><a href="form_update.php?id=<?php echo $id ?>">Update</a></td>
-        <td><a href="pro_delete.php?id=<?php echo $id ?>">Delete</a></td>
+        <td><a href="form_update.php?id=<?php echo $id ?>"><img class="edit" src="images/e.png"></td>
+        <td><a href="pro_delete.php?id=<?php echo $id ?>"><img class="delete" src="images/d.png"></a></td>
     </tr>
 
 </table>
