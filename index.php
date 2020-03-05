@@ -43,7 +43,7 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
           require_once 'form_create.php';
         break;
         case 'PDtls':
-          require_once 'product_details.php';
+          require_once 'product-details.php';
         break;     
         }
           ?>
