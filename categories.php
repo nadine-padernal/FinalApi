@@ -13,7 +13,6 @@
 
 <table cellspacing="0" cellpadding="0">
 		    <tr>
-				<td class="tdP" >CATEGORY ID</td>
 				<td class="tdP" >CATEGORY NAME</td>
 			</tr>
 		<?php
@@ -21,7 +20,6 @@
 		{
         ?>
 		<tr>	
-            <td><?php echo $value['category_id'];?></td>
             <td><?php echo $value['category_name'];?></td>
 		</tr>	
         <?php
