@@ -21,8 +21,11 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
           require_once 'form_create.php';
         break;
         case 'PDtls':
-          require_once 'product-details.php';
-        break;     
+          require_once 'product_details.php';
+        break; 
+	case 'PUp':
+          require_once 'form_update.php';
+        break; 
         }
           ?>
   </div>
