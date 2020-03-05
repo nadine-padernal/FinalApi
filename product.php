@@ -28,7 +28,6 @@ if(isset($_POST['search'])){
 	</div>
 <table>
     <tr>
-        <td class="tdP" >ID</th>
         <td class="tdP" >Product</th>
         <td class="tdP" >Price</th>
     </tr>
@@ -36,7 +35,6 @@ if(isset($_POST['search'])){
 foreach($list as $value){
     ?>
     <tr>
-        <td><?php echo $value['id'];?></td>
         <td><a style="color:#000;" href="index.php?mod=PDtls&id=<?php echo $value['id'];?>"><?php echo $value['name'];?></a></td>
         <td><?php echo $value['price'];?></td>
     </tr>
