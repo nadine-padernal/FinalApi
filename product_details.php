@@ -48,7 +48,7 @@ $value = $list;
         <td><?php echo $value['description'];?></td>
         <td><?php echo $value['price'];?></td>
         <td><?php echo $value['category_id'];?></td>
-        <td><a href="form_update.php?id=<?php echo $id ?>"><img class="edit" src="images/e.png"></td>
+        <td><a href="index.php?mod=PUp&id=<?php echo $id ?>"><img class="edit" src="images/e.png"></td>
         <td><a href="pro_delete.php?id=<?php echo $id ?>"><img class="delete" src="images/d.png"></a></td>
     </tr>
 
