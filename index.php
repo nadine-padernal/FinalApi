@@ -1,20 +1,5 @@
 <?php
 $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
-
-
-include 'config/config.php';
-include 'classes/class.users.php';
-
-
-$user = new Users();
-
-if(!$user->get_session()){
-	ob_start();
-	  echo "<script type='text/javascript'>location.href = 'system/login.php';</script>";
-	  echo $user->get_session();
-	  ob_end_flush();
-	  //header("location: system/login.php");
-  }
 ?>
 <html>
 <head>
