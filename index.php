@@ -1,5 +1,5 @@
 <?php 
-$mod = (isset($_GET['module']) && $_GET['module'] != '') ? $_GET['module']: '';
+$module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod']: '';
 
   include('google/google-confirm.php');
   if($login_button == true){
@@ -20,15 +20,21 @@ $mod = (isset($_GET['module']) && $_GET['module'] != '') ? $_GET['module']: '';
       
     </head> 
     <body> 
-      <div class="header">
-      <a href="index.php"><img src="images/logo.png" style="width:300px;height:200px;"></a>
-      </div>
-
-      <div class="navbar">
-        <a href="index.php">Home</a>
-        <a href="index.php?navigation=product">Products</a>
-        <a href="index.php?navigation=categories">Category</a>
-      </div>
+    
+<nav>
+  <ul class="primary">
+		<li>
+      <a href="index.php">Home</a>
+    </li>
+    <li>
+    <a href="index.php?navigation=product">Products</a>
+      </ul>
+    </li>
+    <li>
+    <a href="index.php?navigation=categories">Category</a>
+    </li>
+  </ul>
+</nav>
 
 
         <?php 
@@ -88,7 +94,3 @@ $mod = (isset($_GET['module']) && $_GET['module'] != '') ? $_GET['module']: '';
         ?>
     </body>
 </html>
-
-
-
-
