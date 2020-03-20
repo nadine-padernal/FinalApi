@@ -22,17 +22,7 @@
         console.log("ID Token: " + id_token);
       }
     </script>
-  </body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Facebook Login JavaScript Example</title>
-<meta charset="UTF-8">
-</head>
-<body>
-<script>
+    <script>
 
   function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
     console.log('statusChangeCallback');
@@ -98,5 +88,5 @@
 <div id="status">
 </div>
 
-</body>
+  </body>
 </html>
