@@ -38,7 +38,7 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod']: '';
 
         <?php 
         if($login_button == ''){
-          switch($navigation){
+          switch($module){
             case 'product':
               require_once 'product.php';
               break;
