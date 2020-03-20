@@ -28,7 +28,6 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod']: '';
     </li>
     <li>
     <a href="index.php?navigation=product">Products</a>
-      </ul>
     </li>
     <li>
     <a href="index.php?navigation=categories">Category</a>
