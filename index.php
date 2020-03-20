@@ -10,7 +10,7 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 
 <nav>
 <ul class="primary">
-		<li>
+	<li>
       <a href="index.php">Home</a>
     </li>
     <li>
@@ -26,10 +26,13 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
 				<li><a href='index.php?mod=Cat'>Category List</a></li>
       </ul>
     </li>
+	<li>
+      <a href="#" onclick="signOut();">Sign out</a>
+    </li>
   </ul>
 </nav>
 
-	<a href="#" onclick="signOut();">Sign out</a>
+	
 <script>
   function signOut() {
     var auth2 = gapi.auth2.getAuthInstance();
