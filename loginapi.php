@@ -22,12 +22,12 @@
         console.log("ID Token: " + id_token);
       }
     </script>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=673026740130754&autoLogAppEvents=1">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=673026740130754|7SH1MSi54b-7zBi6h6taFRnvJJ8&autoLogAppEvents=1">
 			</script>
 			<?php
 			
 			$fb = new Facebook\Facebook([
-			 'app_id' => '673026740130754',
+			 'app_id' => '673026740130754|7SH1MSi54b-7zBi6h6taFRnvJJ8',
 			 'app_secret' => '6978a6de66b1ab07b32deb97c0e942c7',
 			 'default_graph_version' => 'v2.10',
 			]);
