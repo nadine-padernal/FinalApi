@@ -46,10 +46,7 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod'] : '';
         break; 
 	case 'PUp':
           require_once 'form_update.php';
-        break; 
-	case 'login':
-	    include("loginapi.php");
-	    break;
+        break;
 	default:
 	    include("loginapi.php");
 	    break;
