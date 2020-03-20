@@ -8,7 +8,7 @@ $google_client->setClientId('410146654780-dfpjcnbrs7vpqkm62hs14l7bhtglj9gc.apps.
 
 $google_client->setClientSecret('LpwQD8c_KvD-zYAblbPP8GXz');
 
-$google_client->setRedirectUri('https://apiact.herokuapp.com/index.php');
+$google_client->setRedirectUri('https://apiact.herokuapp.com');
 
 //
 $google_client->addScope('email');
