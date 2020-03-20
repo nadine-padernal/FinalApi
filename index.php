@@ -44,7 +44,7 @@ $mod = (isset($_GET['module']) && $_GET['module'] != '') ? $_GET['module']: '';
               require_once 'form_create.php';
               break;
             case 'details':
-              require_once 'product-details.php';
+              require_once 'product_details.php';
               break;
             case 'update':
               require_once 'form_update.php';
@@ -74,7 +74,7 @@ $mod = (isset($_GET['module']) && $_GET['module'] != '') ? $_GET['module']: '';
                   require_once 'form_create.php';
                   break;
                 case 'details':
-                  require_once 'product-details.php';
+                  require_once 'product_details.php';
                   break;
                 case 'update':
                   require_once 'form_update.php';
