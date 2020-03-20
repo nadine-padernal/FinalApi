@@ -22,71 +22,114 @@
         console.log("ID Token: " + id_token);
       }
     </script>
-    <script>
-
-  function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
-    console.log('statusChangeCallback');
-    console.log(response);                   // The current login status of the person.
-    if (response.status === 'connected') {   // Logged into your webpage and Facebook.
-      testAPI();  
-    } else {                                 // Not logged into your webpage or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this webpage.';
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=673026740130754&autoLogAppEvents=1">
+			</script>
+			<?php
+			
+			$fb = new Facebook\Facebook([
+			 'app_id' => '673026740130754',
+			 'app_secret' => '6978a6de66b1ab07b32deb97c0e942c7',
+			 'default_graph_version' => 'v2.10',
+			]);
+			$helper = $fb->getRedirectLoginHelper();
+			$permissions = ['email']; // optional
+			
+			try {
+				
+			if (isset($_SESSION['facebook_access_token'])) {
+				header('Location: https://apiact.herokuapp.com/index.php');
+			
+			} else {
+			  $accessToken = $helper->getAccessToken();
+			  $oAuth2Client = $fb->getOAuth2Client();
+			}
+			} catch(Facebook\Exceptions\facebookResponseException $e) {
+			// When Graph returns an error
+			echo 'Graph returned an error: ' . $e->getMessage();
+			  exit;
+			} catch(Facebook\Exceptions\FacebookSDKException $e) {
+			// When validation fails or other local issues
+			echo 'Facebook SDK returned an error: ' . $e->getMessage();
+			  exit;
+			}
+			if (isset($accessToken)) {
+				header('Location: : https://apiact.herokuapp.com/index.php');
+				
+			if (isset($_SESSION['facebook_access_token'])) {
+				
+			$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+			} else {
+			// getting short-lived access token
+			$_SESSION['facebook_access_token'] = (string) $accessToken;
+			  // OAuth 2.0 client handler
+			$oAuth2Client = $fb->getOAuth2Client();
+			// Exchanges a short-lived access token for a long-lived one
+			$longLivedAccessToken = $oAuth2Client->getLongLivedAccessToken($_SESSION['facebook_access_token']);
+			$_SESSION['facebook_access_token'] = (string) $longLivedAccessToken;
+			// setting default access token to be used in script
+			$fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+			}
+			// redirect the user to the profile page if it has "code" GET variable
+			if (isset($_GET['code'])) {
+			header('Location: https://apiact.herokuapp.com/index.php');
+			}
+			// getting basic info about user
+			try {
+			header('Location: https://app-puaenerlan.herokuapp.com/?p=table');
+			$profile_request = $fb->get('/me?fields=name,first_name,last_name,email');
+			$requestPicture = $fb->get('/me/picture?redirect=false&height=200'); //getting user picture
+			$picture = $requestPicture->getGraphUser();
+			$profile = $profile_request->getGraphUser();
+			$fbid = $profile->getProperty('id');           // To Get Facebook ID
+			$fbfullname = $profile->getProperty('name');   // To Get Facebook full name
+			$fbemail = $profile->getProperty('email');    //  To Get Facebook email
+			$fbpic = "<img src='".$picture['url']."' class='img-rounded'/>";
+			# save the user nformation in session variable
+			$_SESSION['fb_id'] = $fbid.'</br>';
+			$_SESSION['fb_name'] = $fbfullname.'</br>';
+			$_SESSION['fb_email'] = $fbemail.'</br>';
+			$_SESSION['fb_pic'] = $fbpic.'</br>';
+			} catch(Facebook\Exceptions\FacebookResponseException $e) {
+			// When Graph returns an error
+			echo 'Graph returned an error: ' . $e->getMessage();
+			// redirecting user back to app login page
+			header("Location: ./");
+			exit;
+			} catch(Facebook\Exceptions\FacebookSDKException $e) {
+			// When validation fails or other local issues
+			echo 'Facebook SDK returned an error: ' . $e->getMessage();
+			exit;
+			}
+			} else {
+			// replace your website URL same as added in the developers.Facebook.com/apps e.g. if you used http instead of https and you used            
+			$loginUrl = $helper->getLoginUrl('https://apiact.herokuapp.com/index.php', $permissions);
+			echo '<a href="' . $loginUrl . '"><div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"></div></a>';
+			}
+			?>
+			<br>
+			<br>
+			<div id="my-signin2" data-onsuccess="onSuccess" data-redirecturi="https://iceinventory.000webhostapp.com/?p=admin"></div>
+			<script>
+    function onSuccess(googleUser) {
+        window.location="https://apiact.herokuapp.com/index.php";
     }
-  }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 230,
+        'height': 40,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
 
-
-  function checkLoginState() {               // Called when a person is finished with the Login Button.
-    FB.getLoginStatus(function(response) {   // See the onlogin handler
-      statusChangeCallback(response);
-    });
-  }
-
-
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{673026740130754}',
-      cookie     : true,                     // Enable cookies to allow the server to access the session.
-      xfbml      : true,                     // Parse social plugins on this webpage.
-      version    : '{api-version}'           // Use this Graph API version for this call.
-    });
-
-
-    FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
-      statusChangeCallback(response);        // Returns the login status.
-    });
-  };
-
-  
-  (function(d, s, id) {                      // Load the SDK asynchronously
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "https://connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
- 
-  function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-    });
-  }
-
-</script>
-
-
-
-<fb:login-button 
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
-
-<div id="status">
-</div>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
   </body>
 </html>
