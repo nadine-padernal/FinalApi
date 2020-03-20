@@ -27,10 +27,10 @@ $module = (isset($_GET['mod']) && $_GET['mod'] != '') ? $_GET['mod']: '';
       <a href="index.php">Home</a>
     </li>
     <li>
-    <a href="index.php?navigation=product">Products</a>
+    <a href="index.php?mod=product">Products</a>
     </li>
     <li>
-    <a href="index.php?navigation=categories">Category</a>
+    <a href="index.php?mod=categories">Category</a>
     </li>
   </ul>
 </nav>
